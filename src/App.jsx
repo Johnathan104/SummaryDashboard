@@ -7,6 +7,8 @@ import IncidentSeverityBySite from './components/IncidentSeverityBySite.jsx';
 import PPEComplianceChart from './components/PPEComplianceChart.jsx';
 import IncidentSeverityDistribution from './components/IncidentSeverityDistributuon.jsx';
 import CorrectiveActionsStatus from './components/CorrectiveActionStatus.jsx';
+import 'chart.js/auto';
+
 function App() {
 
   return (

@@ -3,6 +3,7 @@ import {
   CategoryScale,
   LinearScale,
   BarElement,
+  LineElement,
   Tooltip,
   Legend,
   Title,
@@ -12,6 +13,7 @@ import { Bar } from 'react-chartjs-2';
 ChartJS.register(
   CategoryScale,
   LinearScale,
+  LineElement, 
   BarElement,
   Tooltip,
   Legend,

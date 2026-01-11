@@ -9,6 +9,7 @@ import {
   Legend,
   Title,
 } from 'chart.js';
+import 'chart.js/auto';
 
 import { Chart } from 'react-chartjs-2';
 

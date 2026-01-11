@@ -4,17 +4,19 @@ import {
   Tooltip,
   Legend,
   Title,
-} from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
+} from 'chart.js'
+import { Doughnut } from 'react-chartjs-2'
+import { useMemo } from 'react'
 
 ChartJS.register(
   ArcElement,
   Tooltip,
   Legend,
   Title
-);
+)
 
 export default function PPEComplianceChart() {
+
   const data = {
     labels: [
       'Full Compliance',
@@ -23,7 +25,7 @@ export default function PPEComplianceChart() {
     ],
     datasets: [
       {
-        data: [729, 213, 30], // fake data matching image proportions
+        data: [729, 213, 30],
         backgroundColor: [
           '#4e79a7',
           '#9ad0f5',
@@ -32,31 +34,37 @@ export default function PPEComplianceChart() {
         borderWidth: 0,
       },
     ],
-  };
+  }
 
-  const options = {
+  const options = useMemo(() => ({
     responsive: true,
-    cutout: '65%', // 🔑 donut hole size
+    maintainAspectRatio: false,
     plugins: {
-      title: {
-        display: true,
-        text: 'PPE Compliance Breakdown',
-      },
       legend: {
         position: 'top',
-      },
-      tooltip: {
-        callbacks: {
-          label: function (context) {
-            const total = context.dataset.data.reduce((a, b) => a + b, 0);
-            const value = context.raw;
-            const percent = ((value / total) * 100).toFixed(0);
-            return `${context.label}: ${value} (${percent}%)`;
+        labels: {
+          boxWidth: 10,
+          padding: 8,
+          font: (ctx) => {
+            const h = ctx.chart.height
+
+            // scale with chart height
+            const size = Math.max(
+              9,                 // minimum
+              Math.min(h * 0.045, 12) // clamp
+            )
+
+            return { size }
           },
         },
       },
     },
-  };
+  }), [])
 
-  return <Doughnut data={data} options={options} />;
+
+  return (
+    <div className="relative w-full h-full">
+      <Doughnut data={data} options={options} />
+    </div>
+  )
 }

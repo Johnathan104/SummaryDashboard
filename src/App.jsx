@@ -1,190 +1,164 @@
-
 import './App.css'
 import Navbar from './components/static/Navbar.jsx'
-import { MoveDownRight, MoveUpRight} from 'lucide-react'
-import LtifrChart from './components/LtifrChart.jsx';
-import IncidentSeverityBySite from './components/IncidentSeverityBySite.jsx';
-import PPEComplianceChart from './components/PPEComplianceChart.jsx';
-import IncidentSeverityDistribution from './components/IncidentSeverityDistributuon.jsx';
-import CorrectiveActionsStatus from './components/CorrectiveActionStatus.jsx';
-import 'chart.js/auto';
+import { MoveDownRight, MoveUpRight } from 'lucide-react'
+import LtifrChart from './components/LtifrChart.jsx'
+import IncidentSeverityBySite from './components/IncidentSeverityBySite.jsx'
+import PPEComplianceChart from './components/PPEComplianceChart.jsx'
+import IncidentSeverityDistribution from './components/IncidentSeverityDistributuon.jsx'
+import CorrectiveActionsStatus from './components/CorrectiveActionStatus.jsx'
+import 'chart.js/auto'
 
 function App() {
-
   return (
     <>
-      <Navbar/>
-      <div style={{paddingLeft:'3rem', paddingRight:'3rem'} }className="danger text-black">
-        {/* First ROW!!! */}
-        <div className="w-full flex justify-evenly flex-wrap">
-         <div className='p-[30px] flex bg-white gap-4 rounded-sm shadow-md m-2 flex-1'>
-            {/* Added flex-1 to the container */}
-            <div className="flex-1 flex flex-col gap-2">
-              <h2 className="text-sky-950 w-fit font-bold">
-                Start Date
-              </h2>
-              {/* Changed w-[200px] to w-full */}
-              <input className='border-[#666] w-full border p-[5px] rounded-sm' name="startDate" id="startDate"/>
-            </div>
+      <Navbar />
+ <div
+    className="origin-top"
 
-            {/* Added flex-1 to the container */}
+  >
+      {/* ================= MAIN DASHBOARD ================= */}
+      <div
+        className="
+          grid gap-3 px-4  mt-3 text-black
+          lg:h-[calc(100vh-150px)]
+          grid-rows-none
+          lg:grid-rows-[0.4fr_0.6fr_4fr]
+          md: grid-rows-none
+        "
+      >
+
+        {/* ================= ROW 1 : FILTERS ================= */}
+        <div
+          className="
+            grid gap-3
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-4
+          "
+        >
+          <div className="bg-white p-4 shadow flex gap-4">
             <div className="flex-1 flex flex-col gap-2">
-              <h2 className="text-sky-950 w-fit font-bold">
-                End Date
-              </h2>
-              {/* Changed w-[100px] to w-full */}
-              <input className='border-[#666] w-full border p-[5px] rounded-sm' name="endDate" id="endDate" />
+              <h2 className="font-bold text-sky-950">Start Date</h2>
+              <input className="border p-1 rounded w-full" />
+            </div>
+            <div className="flex-1 flex flex-col gap-2">
+              <h2 className="font-bold text-sky-950">End Date</h2>
+              <input className="border p-1 rounded w-full" />
             </div>
           </div>
-          <div className='p-[30px] flex bg-white gap-4 rounded-sm shadow-md m-2 flex-1'>
-            <div className="w-100 flex flex-col gap-2">
-               <h2 className="text-sky-950 w-fit font-bold">
-                Select Sites
-              </h2>
-              <select className='border-[#666] border p-[5px] rounded-sm' name="siteSelect" id="siteSelect">
-                <option value="site1">All Sites</option>
-              </select>
-            </div>
-          
+
+          <div className="bg-white p-4 shadow">
+            <h2 className="font-bold text-sky-950 mb-2">Select Site</h2>
+            <select className="border p-1 rounded w-full">
+              <option>All Sites</option>
+            </select>
           </div>
-          <div className='p-[30px] flex bg-white gap-4 rounded-sm shadow-md m-2 flex-1'>
-            <div className="w-100 flex flex-col gap-2">
-               <h2 className="text-sky-950 w-fit font-bold">
-                Select Department
-              </h2>
-              <select className='border-[#666] border p-[5px] rounded-sm' name="depSelect" id="depSelect">
-                <option value="dep1">All departments</option>
-              </select>
-            </div>
+
+          <div className="bg-white p-4 shadow">
+            <h2 className="font-bold text-sky-950 mb-2">Select Department</h2>
+            <select className="border p-1 rounded w-full">
+              <option>All Departments</option>
+            </select>
           </div>
-          <div className='p-[30px] flex bg-white gap-4 rounded-sm shadow-md m-2 flex-1'>
-            <div className="w-100 flex flex-col gap-2">
-               <h2 className="text-sky-950 w-fit font-bold">
-                Select Department
-              </h2>
-              <select className='border-[#666] border p-[5px] rounded-sm' name="depSelect" id="depSelect">
-                <option value="dep1">All departments</option>
-              </select>
-            </div>
+
+          <div className="bg-white p-4 shadow">
+            <h2 className="font-bold text-sky-950 mb-2">Select Department</h2>
+            <select className="border p-1 rounded w-full">
+              <option>All Departments</option>
+            </select>
           </div>
         </div>
-        {/* Second ROW!!! */}
-         <div className="w-full flex justify-evenly flex-wrap">
-          <div className='p-[30px] flex bg-white gap-4 rounded-sm shadow-md m-2 flex-1'>
-            <div className="w-100 flex flex-col gap-2">
-               <h2 className="text-sky-950 w-fit font-bold">
-                  Total Incidents(YTD)
-                </h2>
-                <h1 className="text-black w-fit font-bold">
-                  <div className="flex justify-center items-center pl-[10px]">
-                    972 <MoveDownRight size={35} className='text-green-800 ml-[10px] font-[100px] font-bold'/>
-                  </div>
-                </h1>
-                <p className='w-fit text-stone-600'>vs prev 1032 <span className='text-green-800'>( -5.8% )</span></p>
+
+        {/* ================= ROW 2 : KPI ================= */}
+        <div
+          className="
+            grid gap-3
+            grid-cols-1
+            sm:grid-cols-2
+            md:grid-cols-3
+            lg:grid-cols-5
+          "
+        >
+          {[
+            ['Total Incidents (YTD)', '972', '-5.8%', <MoveDownRight className="text-green-800" size={10} />],
+            ['LTIFR', '0.85', '-29.2%', <MoveDownRight className="text-green-800" size={10} />],
+            ['PPE Compliance', '94.2%', '+5%', <MoveUpRight className="text-green-800" size={10} />],
+            ['Corrective Actions', '78%', '+5%', <MoveUpRight className="text-green-800" size={10} />],
+            ['Toolbox Talk', '89.7%', '+5.3%', <MoveUpRight className="text-green-800" size={10} />],
+          ].map(([title, value, delta, icon], i) => (
+            <div
+              key={i}
+              className="bg-white p-4 shadow flex flex-col justify-center"
+            >
+              <h2 className="font-bold text-[100%] text-sky-950">{title}</h2>
+              <div className="flex items-center text-[100%] font-bold mt-2">
+                {value} {icon}
               </div>
-          </div>
-          <div className='p-[30px] flex bg-white gap-4 rounded-sm shadow-md m-2 flex-1'>
-            <div className="w-100 flex flex-col gap-2">
-              <h2 className="text-sky-950 w-fit font-bold">
-                Lost Time Injury Frequency Rate (rate)
-              </h2>
-              <h1 className="text-black w-fit font-bold">
-                <div className="flex justify-center items-center pl-[10px]">
-                  0.85 <MoveDownRight size={35} className='text-green-800 ml-[10px] font-[100px] font-bold'/>
-                </div>
-              </h1>
-              <p className='w-fit text-stone-600'>vs prev 1.2 <span className='text-green-800'>( -29.2% )</span></p>
+              <p className="text-[100%] text-gray-500">
+                vs prev <span className="text-green-800">({delta})</span>
+              </p>
             </div>
-          </div>
-          <div className='p-[30px] flex bg-white gap-4 rounded-sm shadow-md m-2 flex-1'>
-            <div className="w-100 flex flex-col gap-2">
-              <h2 className="text-sky-950 w-fit font-bold">
-                PPE Compliance (%)
-              </h2>
-              <h1 className="text-black w-fit font-bold">
-                <div className="flex justify-center items-center pl-[10px]">
-                  94.2 <MoveUpRight size={35} className='text-green-800 ml-[10px] font-[100px] font-bold'/>
-                </div>
-              </h1>
-              <p className='w-fit text-stone-600'>vs prev 89.2% <span className='text-green-800'>( +5% )</span></p>
-            </div>
-          </div>
-          <div className='p-[30px] flex bg-white gap-4 rounded-sm shadow-md m-2 flex-1'>
-            <div className="w-100 flex flex-col gap-2">
-              <h2 className="text-sky-950 w-fit font-bold">
-                Corrective Actions Completed (%)
-              </h2>
-              <h1 className="text-black w-fit font-bold">
-                <div className="flex justify-center items-center pl-[10px]">
-                  78% <MoveUpRight size={35} className='text-green-800 ml-[10px] font-[100px] font-bold'/>
-                </div>
-              </h1>
-              <p className='w-fit text-stone-600'>vs prev 73% <span className='text-green-800'>( +5% )</span></p>
-            </div>
-          </div>
-          <div className='p-[30px] flex bg-white gap-4 rounded-sm shadow-md m-2 flex-1'>
-            <div className="w-100 flex flex-col gap-2">
-              <h2 className="text-sky-950 w-fit font-bold">
-                Toolbox Talk Participation(%)
-              </h2>
-              <h1 className="text-black w-fit font-bold">
-                <div className="flex justify-center items-center pl-[10px]">
-                  89.7% <MoveUpRight size={35} className='text-green-800 ml-[10px] font-[100px] font-bold'/>
-                </div>
-              </h1>
-              <p className='w-fit text-stone-600'>vs prev 85.2% <span className='text-green-800'>( +5.3% )</span></p>
-            </div>
-          </div>
-         </div>
-        {/* Third ROW!!! */}
-        <div className="w-full flex justify-evenly flex-wrap">
-          <div className="flex-1 flex-wrap justify-arond">
-            <div className='p-[30px] flex bg-white gap-4 rounded-sm shadow-md m-2 flex-1'>
-              <div className="flex flex-col gap-2">
-                <h2 className="text-sky-950 w-fit font-bold">
-                  Monthly Incidents and LTIFR Trends
-                </h2>
-                <LtifrChart/>
-              </div>
-            </div>
-            <div className='p-[30px] flex bg-white gap-4 rounded-sm shadow-md m-2 flex-1'>
-              <div className="flex flex-col items-center justify-center gap-2">
-                <h2 className="text-sky-950 w-fit font-bold">
-                  PPE Compliance Breakdown
-                </h2>
-                <PPEComplianceChart/>
-              </div>
-            </div>
-            <div className='p-[30px] flex bg-white gap-4 rounded-sm shadow-md m-2 flex-1'>
-              <div className="w-[100%] flex flex-col gap-2">
-                <h2 className="text-sky-950 w-fit font-bold">
-                  Incident Severity Distribution
-                </h2>
-                <IncidentSeverityDistribution/>
-              </div>
-            </div>
-            <div className='p-[30px] flex bg-white gap-4 rounded-sm shadow-md m-2 flex-1'>
-              <div className="flex flex-col items-center justify-center gap-2">
-                <h2 className="text-sky-950 w-fit font-bold">
-                  Corrective Action Status By Department
-                </h2>
-                <CorrectiveActionsStatus/>
-              </div>
-            </div>
-          </div>
-          <div className='p-[30px] flex bg-white gap-4 rounded-sm shadow-md m-2 flex-1'>
-            <div className="w-[100%] flex flex-col gap-2">
-              <h2 className="text-sky-950 w-fit font-bold">
-                Incident Severity Distribution by Site  
-              </h2>
-              <div className="h-[800px] w-[100%] flex justify-center items-center">
-                <IncidentSeverityBySite/>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
+
+        {/* ================= ROW 3 : CHARTS ================= */}
+        <div
+          className="
+            grid gap-3 min-h-0
+            grid-cols-1
+            md:grid-cols-2
+            lg:grid-cols-3
+            lg:h-full
+          "
+        >
+
+          {/* COLUMN 1 */}
+          <div className="grid grid-rows-2 gap-3 min-h-0">
+            <ChartCard title="Monthly Incidents & LTIFR">
+              <LtifrChart />
+            </ChartCard>
+
+            <ChartCard title="PPE Compliance">
+              <PPEComplianceChart />
+            </ChartCard>
+          </div>
+
+          {/* COLUMN 2 */}
+          <div className="grid grid-rows-2 gap-3 min-h-0">
+            <ChartCard title="Incident Severity">
+              <IncidentSeverityDistribution />
+            </ChartCard>
+
+            <ChartCard title="Corrective Actions">
+              <div className='h-full '>
+              <CorrectiveActionsStatus />
+              </div>
+            </ChartCard>
+          </div>
+
+          {/* COLUMN 3 */}
+          <ChartCard title="Incident Severity by Site">
+            <IncidentSeverityBySite />
+          </ChartCard>
+        </div>
+
       </div>
-    </>
+    </div>
+  </>
+  )
+}
+
+/* ================= REUSABLE CHART CARD ================= */
+function ChartCard({ title, children }) {
+  return (
+    <div className="bg-white p-3 shadow flex flex-col min-h-0 overflow-scroll">
+      <h2 className="font-bold text-sky-950 text-sm mb-1 shrink-0">
+        {title}
+      </h2>
+      <div className="flex-1 min-h-[220px] lg:min-h-[150px] overflow-hidden flex justify-center items-center">
+        {children}
+      </div>
+    </div>
   )
 }
 

@@ -8,6 +8,7 @@ import {
   Title,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import 'chart.js/auto';
 
 ChartJS.register(
   CategoryScale,

@@ -3,7 +3,7 @@ import "../../App.css";
 
 const Navbar = () => {
 	return (
-		<nav  style={{ backgroundColor: '#fff', padding: '1rem',paddingLeft:'3rem', paddingRight:'3rem', position: 'sticky', top: 0, width: '100%', zIndex: 100 }}>
+		<nav className="shadow"  style={{ backgroundColor: '#fff', padding: '1rem',paddingLeft:'3rem', paddingRight:'3rem', position: 'sticky', top: 0, width: '100%', zIndex: 100 }}>
             <div className="container">
                 <ul style={{ display: 'flex', listStyle: 'none', margin: 0, padding: 0 }}>
                             <li style={{ marginRight: '1.5rem' }}>

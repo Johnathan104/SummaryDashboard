@@ -8,6 +8,7 @@ import {
   Title,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import 'chart.js/auto';
 
 ChartJS.register(
   CategoryScale,
@@ -73,8 +74,6 @@ export default function CorrectiveActionsStatus() {
   };
 
   return (
-    <div style={{ height: '260px' }}>
       <Bar data={data} options={options} />
-    </div>
   );
 }

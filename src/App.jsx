@@ -23,7 +23,6 @@ function App() {
           lg:h-[calc(100vh-150px)]
           grid-rows-none
           lg:grid-rows-[0.4fr_0.6fr_4fr]
-          md: grid-rows-none
         "
       >
 
@@ -155,7 +154,7 @@ function ChartCard({ title, children }) {
       <h2 className="font-bold text-sky-950 text-sm mb-1 shrink-0">
         {title}
       </h2>
-      <div className="flex-1 min-h-[220px] lg:min-h-[150px] overflow-hidden flex justify-center items-center">
+      <div className="flex-1 min-h-[220px] lg:min-h-[150px] overflow-hidden">
         {children}
       </div>
     </div>

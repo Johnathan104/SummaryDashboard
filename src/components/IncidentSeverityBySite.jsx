@@ -23,26 +23,26 @@ export default function IncidentSeverityBySite() {
   const data = {
     labels: [
       'Construction Zone A',
-      'Mining Site D',
-      'Industrial Plant D',
-      'Warehouse Complex E',
-      'Mining Site A',
+      'Construction Zone B',
+      'Construction Zone C',
+      'Construction Zone D',
+      'Construction Zone E',
     ],
     datasets: [
       {
         label: 'Minor Incidents',
         data: [45, 38, 34, 36, 30],
-        backgroundColor: '#4e79a7',
+        backgroundColor: '#429a46ff',
       },
       {
         label: 'Moderate Incidents',
         data: [20, 22, 18, 20, 15],
-        backgroundColor: '#9ad0f5',
+        backgroundColor: '#cfa922ff',
       },
       {
         label: 'Major Incidents',
         data: [25, 30, 28, 27, 22],
-        backgroundColor: '#c7c7f4',
+        backgroundColor: '#c43d33ff',
       },
     ],
   };

@@ -28,17 +28,17 @@ export default function IncidentSeverityDistribution() {
       {
         label: 'Minor Incidents',
         data: [46],
-        backgroundColor: '#4e79a7',
+        backgroundColor: '#429a46ff',
       },
       {
         label: 'Moderate Incidents',
         data: [23.2],
-        backgroundColor: '#9ad0f5',
+        backgroundColor: '#cfa922ff',
       },
       {
         label: 'Major Incidents',
         data: [30.8],
-        backgroundColor: '#c7c7f4',
+        backgroundColor: '#c43d33ff',
       },
     ],
   };

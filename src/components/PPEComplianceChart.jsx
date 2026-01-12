@@ -27,9 +27,9 @@ export default function PPEComplianceChart() {
       {
         data: [729, 213, 30],
         backgroundColor: [
-          '#4e79a7',
-          '#9ad0f5',
-          '#c7c7f4',
+          '#429a46ff',
+          '#cfa922ff',
+          '#c43d33ff',
         ],
         borderWidth: 0,
       },

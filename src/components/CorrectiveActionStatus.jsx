@@ -36,7 +36,7 @@ export default function CorrectiveActionsStatus() {
       {
         label: 'In Progress',
         data: [30, 15, 23, 35],
-        backgroundColor: '#9ad0f5',
+        backgroundColor: '#dfe608ff',
       },
     ],
   };
